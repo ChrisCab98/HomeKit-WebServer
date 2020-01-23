@@ -24,12 +24,17 @@ bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-    return render_template('homepage.html')
+    return render_template('room1.html')
+
+@app.route('/livingRoom')
+def livingRoom():
+    return render_template('livingRoom.html')
 
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
-    mqtt.subscribe('cmnd/smartSurgeOutlet3/power')
+    # mqtt.subscribe('cmnd/smartSurgeOutlet3/power')
+    mqtt.subscribe('stat/smartSurgeOutlet3/POWER')
 
 
 @mqtt.on_message()
