@@ -2,6 +2,9 @@ $(document).ready(function () {
     var socket = io.connect('http://' + document.domain + ':' + location.port);
 
     window.onload = function () {
+
+        console.log('Page has been refreshed')
+
         var topic = 'cmnd/smartSurgeOutlet3/power';
         var message = '';
         var qos = 0;
