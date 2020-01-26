@@ -9,7 +9,6 @@ import json
 from flask import Flask, render_template
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
-# from flask_bootstrap import Bootstrap
 
 eventlet.monkey_patch()
 
@@ -17,8 +16,6 @@ app = Flask(__name__)
 app.config['SECRET'] = 'my secret key'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['MQTT_BROKER_URL'] = '192.168.1.29'
-# app.config['MQTT_BROKER_URL'] = '127.0.0.1'
-# app.config['MQTT_BROKER_URL'] = 'broker.hivemq.com'
 app.config['MQTT_BROKER_PORT'] = 1883
 app.config['MQTT_CLIENT_ID'] = ''
 app.config['MQTT_USERNAME'] = ''
@@ -37,8 +34,6 @@ app.config['MQTT_LAST_WILL_QOS'] = 2
 
 mqtt = Mqtt(app)
 socketio = SocketIO(app)
-# bootstrap = Bootstrap(app)
-
 
 @app.route('/')
 def index():
