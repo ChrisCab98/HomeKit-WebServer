@@ -41,8 +41,6 @@ $(document).ready(function () {
         }
 
         var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
-        console.log(data)
-        // console.log(state)
         socket.emit('publish', data = data);
     });
 
@@ -50,11 +48,31 @@ $(document).ready(function () {
 
     $('#usbPorts').click(function (event) {
         var topic = 'cmnd/smartSurgeOutlet4/power';
-        var message = 'on';
+        var message = '';
         var qos = 0;
+
+        var state = $('#usbPortsState').text();
+
+        console.log("1 : " + state)
+
+        if (state == 'On') {
+            message = 'off';
+            console.log("if state == On " + message)
+        }
+
+        else {
+            message = 'on';
+            console.log("if state == Off " + message)
+        }
+
         var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
         socket.emit('publish', data = data);
     });
+
+
+
+
+
 
     socket.on('mqtt_message', function (data) {
         console.log(data);
