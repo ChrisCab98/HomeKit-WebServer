@@ -27,81 +27,66 @@ $(document).ready(function () {
         var message = '';
         var qos = 0;
         var state = $('#deskLampState').text();
-        var img = document.getElementById("deskLampImg");
-        var imgAttribute = img.getAttribute("src");
-
-        console.log("img :" + imgAttribute)
 
         if (state == 'On') {
             message = 'off';
-            imgAttribute = "../static/png/lampOff.png"
-            console.log("if state == On " + message)
         }
 
         else {
             message = 'on';
-            imgAttribute = "../static/png/lampOn.png"
-            console.log("if state == Off " + message)
         }
 
-        img.setAttribute("src",imgAttribute);
         var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
         socket.emit('publish', data = data);
     });
-
-
 
     $('#usbPorts').click(function (event) {
         var topic = 'cmnd/smartSurgeOutlet4/power';
         var message = '';
         var qos = 0;
         var state = $('#usbPortsState').text();
-        var img = document.getElementById("usbPortsImg");
-        var imgAttribute = img.getAttribute("src");
-
-        console.log("1 : " + state)
 
         if (state == 'On') {
             message = 'off';
-            imgAttribute = "../static/png/usbOff.png"
-            console.log("if state == On " + message)
         }
 
         else {
             message = 'on';
-            imgAttribute = "../static/png/usbOn.png"
-            console.log("if state == Off " + message)
         }
 
-        img.setAttribute("src",imgAttribute);
         var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
         socket.emit('publish', data = data);
     });
 
-
-
-
-
-
     socket.on('mqtt_message', function (data) {
         console.log(data);
         if (data['topic'] == 'stat/smartSurgeOutlet3/POWER') {
+            var img = document.getElementById("deskLampImg");
+            var imgAttribute = img.getAttribute("src");
+
             if (data['payload'] == 'ON') {
                 $('#deskLampState').text('On');
+                imgAttribute = "../static/png/lampOn.png"
             }
             else {
                 $('#deskLampState').text('Off');
+                imgAttribute = "../static/png/lampOff.png"
             }
-
+            img.setAttribute("src", imgAttribute);
         }
 
         if (data['topic'] == 'stat/smartSurgeOutlet4/POWER') {
+            var img = document.getElementById("usbPortsImg");
+            var imgAttribute = img.getAttribute("src");
             if (data['payload'] == 'ON') {
                 $('#usbPortsState').text('On');
+                imgAttribute = "../static/png/usbOn.png"
             }
             else {
                 $('#usbPortsState').text('Off');
+                imgAttribute = "../static/png/usbOff.png"
             }
+            img.setAttribute("src", imgAttribute);
 
         }
 
