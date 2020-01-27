@@ -15,7 +15,8 @@ eventlet.monkey_patch()
 app = Flask(__name__)
 app.config['SECRET'] = 'my secret key'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['MQTT_BROKER_URL'] = '192.168.1.29'
+app.config['MQTT_BROKER_URL'] = '192.168.68.113'  # HomeKit-Server.devisubox.com
+# app.config['MQTT_BROKER_URL'] = '192.168.1.29' # HomeKit-Server.local
 app.config['MQTT_BROKER_PORT'] = 1883
 app.config['MQTT_CLIENT_ID'] = ''
 app.config['MQTT_USERNAME'] = ''
@@ -35,9 +36,11 @@ app.config['MQTT_LAST_WILL_QOS'] = 2
 mqtt = Mqtt(app)
 socketio = SocketIO(app)
 
+
 @app.route('/')
 def index():
     return render_template('room1.html')
+
 
 @app.route('/livingRoom')
 def livingRoom():
