@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var socket = io.connect('http://' + document.domain + ':' + location.port);
 
+
+
     window.onload = function () {
 
         console.log('Page has been refreshed')
@@ -21,6 +23,9 @@ $(document).ready(function () {
         socket.emit('publish', data2 = data2);
         console.log(data2)
     };
+
+    $(".dropdown-toggle").dropdown();
+    
 
     $('#deskLamp').click(function (event) {
         var topic = 'cmnd/smartSurgeOutlet3/power';
@@ -91,5 +96,4 @@ $(document).ready(function () {
         }
 
     })
-
 });
