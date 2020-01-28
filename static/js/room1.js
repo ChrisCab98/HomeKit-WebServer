@@ -25,7 +25,7 @@ $(document).ready(function () {
     };
 
     $(".dropdown-toggle").dropdown();
-    
+
 
     $('#deskLamp').click(function (event) {
         var topic = 'cmnd/smartSurgeOutlet3/power';
@@ -50,6 +50,24 @@ $(document).ready(function () {
         var message = '';
         var qos = 0;
         var state = $('#usbPortsState').text();
+
+        if (state == 'On') {
+            message = 'off';
+        }
+
+        else {
+            message = 'on';
+        }
+
+        var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
+        socket.emit('publish', data = data);
+    });
+
+    $('#screenMonitor').click(function (event) {
+        var topic = 'cmnd/smartSurgeOutlet2/power';
+        var message = '';
+        var qos = 0;
+        var state = $('#screenMonitorState').text();
 
         if (state == 'On') {
             message = 'off';
@@ -90,6 +108,21 @@ $(document).ready(function () {
             else {
                 $('#usbPortsState').text('Off');
                 imgAttribute = "../static/png/usbOff.png"
+            }
+            img.setAttribute("src", imgAttribute);
+
+        }
+
+        if (data['topic'] == 'stat/smartSurgeOutlet2/POWER') {
+            var img = document.getElementById("screenMonitorImg");
+            var imgAttribute = img.getAttribute("src");
+            if (data['payload'] == 'ON') {
+                $('#screenMonitorState').text('On');
+                imgAttribute = "../static/png/screenOn.png"
+            }
+            else {
+                $('#screenMonitorState').text('Off');
+                imgAttribute = "../static/png/screenOff.png"
             }
             img.setAttribute("src", imgAttribute);
 

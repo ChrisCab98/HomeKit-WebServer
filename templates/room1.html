@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>Room1 HomeKit Hub</title>
 
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -30,10 +29,8 @@
 </head>
 
 
-
 <body>
     <div class="container-fluid">
-
 
         <div class="row clearfix">
             <h1 class="display-4 text-white font-weight-bold col-md-9">Chambre De Christopher</h1>
@@ -41,8 +38,8 @@
             <div class="col-md-3 rounded text-right my-auto">
 
                 <div class="dropdown">
-                    <a class="btn btn-circle btn-light font-weight-bold dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-circle btn-light font-weight-bold dropdown-toggle" href="#" role="button"
+                        id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         +
                     </a>
 
@@ -58,15 +55,9 @@
 
         </div>
 
-
-
-
-
         <div class="row h-100">
             <!-- Left Pannel -->
             <div class="col-sm-1 col-md-1 my-auto">
-                <!-- <p class="text-center">First Col</p> -->
-
                 <div class="text-center my-auto">
                     <a href="livingRoom">
                         <img src="../static/png/left-arrow.png" style="width: 4rem; height: 4rem;"
@@ -77,15 +68,12 @@
             </div>
             <!-- Center Pannel -->
             <div class="col-sm-10 col-md-10 my-auto">
-                <!-- <p class="text-center">Second Col</p> -->
-
                 <button id="deskLamp" type="button" class="btn">
                     <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
                         <div class="card-body">
                             <img id="deskLampImg" width="64" height="64" src="../static/png/lampOff.png" class="mr-3"
                                 alt="...">
                             <h5 class="card-title"> <br> Lampe <br> Bureau</h5>
-                            <!-- <p class="card-text">Off</p> -->
                             <h6 id="deskLampState" class="card-subtitle mb-2 text-muted font-weight-bold"></h6>
 
                         </div>
@@ -98,7 +86,6 @@
                             <img id="usbPortsImg" width="64" height="64" src="../static/png/usbOff.png" class="mr-3"
                                 alt="...">
                             <h5 class="card-title"> <br> Prises <br> USB</h5>
-                            <!-- <p class="card-text">Off</p> -->
                             <h6 id="usbPortsState" class="card-subtitle mb-2 text-muted font-weight-bold"></h6>
 
                         </div>
@@ -108,9 +95,8 @@
                 <button id="screenMonitor" type="button" class="btn">
                     <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
                         <div class="card-body">
-                            <img width="64" height="64" src="../static/png/screen.png" class="mr-3" alt="...">
+                            <img id="screenMonitorImg" width="64" height="64" src="../static/png/screenOff.png" class="mr-3" alt="...">
                             <h5 class="card-title"> <br> Moniteur <br> Externe</h5>
-                            <!-- <p class="card-text">Off</p> -->
                             <h6 id="screenMonitorState" class="card-subtitle mb-2 text-muted font-weight-bold"></h6>
 
                         </div>
@@ -137,7 +123,7 @@
             <div class="col-sm-1 col-md-1 my-auto">
                 <!-- <p class="text-center">Third Col</p> -->
 
-                <div class="text-center">
+                <div class="text-center my-auto">
                     <a href="livingRoom">
                         <img src="../static/png/right-arrow.png" style="width: 4rem; height: 4rem;"
                             class="rounded mx-auto" alt="...">
