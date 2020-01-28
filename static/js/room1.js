@@ -17,11 +17,19 @@ $(document).ready(function () {
         var qos2 = 0;
         var data2 = '{"topic": "' + topic2 + '", "message": "' + message2 + '", "qos": ' + qos2 + '}';
 
+        var topic3 = 'cmnd/smartSurgeOutlet2/power';
+        var message3 = '';
+        var qos3 = 0;
+        var data3 = '{"topic": "' + topic3 + '", "message": "' + message3 + '", "qos": ' + qos3 + '}';
+
         socket.emit('publish', data = data);
         console.log(data)
 
         socket.emit('publish', data2 = data2);
         console.log(data2)
+
+        socket.emit('publish', data3 = data3);
+        console.log(data3)
     };
 
     $(".dropdown-toggle").dropdown();
