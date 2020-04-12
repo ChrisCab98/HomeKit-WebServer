@@ -9,6 +9,9 @@ import json
 from flask import Flask, render_template
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
+from flask_sqlalchemy import SQLAlchemy
+import sqlite3
+
 
 eventlet.monkey_patch()
 
@@ -16,7 +19,7 @@ app = Flask(__name__)
 app.config['SECRET'] = 'my secret key'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 # app.config['MQTT_BROKER_URL'] = '192.168.68.113'  # HomeKit-Server.devisubox.com
-app.config['MQTT_BROKER_URL'] = '192.168.1.29' # HomeKit-Server.local
+app.config['MQTT_BROKER_URL'] = '192.168.1.29'  # HomeKit-Server.local
 app.config['MQTT_BROKER_PORT'] = 1883
 app.config['MQTT_CLIENT_ID'] = ''
 app.config['MQTT_USERNAME'] = ''
@@ -26,6 +29,10 @@ app.config['MQTT_TLS_ENABLED'] = False
 app.config['MQTT_LAST_WILL_TOPIC'] = 'home/lastwill'
 app.config['MQTT_LAST_WILL_MESSAGE'] = 'bye'
 app.config['MQTT_LAST_WILL_QOS'] = 2
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/accessories.db'
+app.config['SECRET_KEY'] = 'mysecret'
+db = SQLAlchemy(app)
 
 # Parameters for SSL enabled
 # app.config['MQTT_BROKER_PORT'] = 8883
@@ -37,9 +44,36 @@ mqtt = Mqtt(app)
 socketio = SocketIO(app)
 
 
+class Accessorie(db.Model):
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    Name = db.Column(db.String(20), nullable=False)
+    Topic = db.Column(db.String(100), nullable=False, unique=True)
+    # Image = db.Column(db.String(50), nullable=False,)
+
+    Image_ID = db.Column(db.Integer,db.ForeignKey('image.id'))
+
+    def __repr__(self):
+        return '%r' % (self.Name)
+
+
+class Image(db.Model):
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    Name = db.Column(db.String(50), nullable=False, unique=False)
+    Path = db.Column(db.String(50), nullable=False, unique=False)
+
+    Accessories = db.relationship('Accessorie',backref='image')
+
+    def __repr__(self):
+        return '%r' % (self.Name)
+
+
 @app.route('/')
 def index():
     return render_template('room1.html')
+
+@app.route('/addAccessories')
+def addAccessories():
+    return render_template('addAccessories.html')
 
 
 @app.route('/livingRoom')
