@@ -41,7 +41,7 @@ $(document).ready(function () {
         var qos = 0;
         var state = $('#deskLampState').text();
 
-        if (state == 'On') {
+        if (state == 'Allumé') {
             message = 'off';
         }
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
         var qos = 0;
         var state = $('#usbPortsState').text();
 
-        if (state == 'On') {
+        if (state == 'Allumé') {
             message = 'off';
         }
 
@@ -77,7 +77,7 @@ $(document).ready(function () {
         var qos = 0;
         var state = $('#screenMonitorState').text();
 
-        if (state == 'On') {
+        if (state == 'Allumé') {
             message = 'off';
         }
 
@@ -96,11 +96,11 @@ $(document).ready(function () {
             var imgAttribute = img.getAttribute("src");
 
             if (data['payload'] == 'ON') {
-                $('#deskLampState').text('On');
+                $('#deskLampState').text('Allumé');
                 imgAttribute = "../static/png/lamp2.png"
             }
             else {
-                $('#deskLampState').text('Off');
+                $('#deskLampState').text('Éteint');
                 imgAttribute = "../static/png/lamp2Off.png"
             }
             img.setAttribute("src", imgAttribute);
@@ -110,11 +110,11 @@ $(document).ready(function () {
             var img = document.getElementById("usbPortsImg");
             var imgAttribute = img.getAttribute("src");
             if (data['payload'] == 'ON') {
-                $('#usbPortsState').text('On');
+                $('#usbPortsState').text('Allumé');
                 imgAttribute = "../static/png/powerOutlet.png"
             }
             else {
-                $('#usbPortsState').text('Off');
+                $('#usbPortsState').text('Éteint');
                 imgAttribute = "../static/png/powerOutletOff.png"
             }
             img.setAttribute("src", imgAttribute);
@@ -125,11 +125,11 @@ $(document).ready(function () {
             var img = document.getElementById("screenMonitorImg");
             var imgAttribute = img.getAttribute("src");
             if (data['payload'] == 'ON') {
-                $('#screenMonitorState').text('On');
+                $('#screenMonitorState').text('Allumé');
                 imgAttribute = "../static/png/TV.png"
             }
             else {
-                $('#screenMonitorState').text('Off');
+                $('#screenMonitorState').text('Éteint');
                 imgAttribute = "../static/png/TVOff.png"
             }
             img.setAttribute("src", imgAttribute);
