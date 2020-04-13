@@ -97,11 +97,11 @@ $(document).ready(function () {
 
             if (data['payload'] == 'ON') {
                 $('#deskLampState').text('On');
-                imgAttribute = "../static/png/lampOn.png"
+                imgAttribute = "../static/png/lamp2.png"
             }
             else {
                 $('#deskLampState').text('Off');
-                imgAttribute = "../static/png/lampOff.png"
+                imgAttribute = "../static/png/lamp2Off.png"
             }
             img.setAttribute("src", imgAttribute);
         }
@@ -111,11 +111,11 @@ $(document).ready(function () {
             var imgAttribute = img.getAttribute("src");
             if (data['payload'] == 'ON') {
                 $('#usbPortsState').text('On');
-                imgAttribute = "../static/png/usbOn.png"
+                imgAttribute = "../static/png/powerOutlet.png"
             }
             else {
                 $('#usbPortsState').text('Off');
-                imgAttribute = "../static/png/usbOff.png"
+                imgAttribute = "../static/png/powerOutletOff.png"
             }
             img.setAttribute("src", imgAttribute);
 
@@ -126,11 +126,11 @@ $(document).ready(function () {
             var imgAttribute = img.getAttribute("src");
             if (data['payload'] == 'ON') {
                 $('#screenMonitorState').text('On');
-                imgAttribute = "../static/png/screenOn.png"
+                imgAttribute = "../static/png/TV.png"
             }
             else {
                 $('#screenMonitorState').text('Off');
-                imgAttribute = "../static/png/screenOff.png"
+                imgAttribute = "../static/png/TVOff.png"
             }
             img.setAttribute("src", imgAttribute);
 

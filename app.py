@@ -11,6 +11,7 @@ from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
+from datetime import datetime
 
 
 eventlet.monkey_patch()
@@ -50,7 +51,7 @@ class Accessorie(db.Model):
     Topic = db.Column(db.String(100), nullable=False, unique=True)
     # Image = db.Column(db.String(50), nullable=False,)
 
-    Image_ID = db.Column(db.Integer,db.ForeignKey('image.id'))
+    Image_ID = db.Column(db.Integer, db.ForeignKey('image.id'))
 
     def __repr__(self):
         return '%r' % (self.Name)
@@ -61,7 +62,7 @@ class Image(db.Model):
     Name = db.Column(db.String(50), nullable=False, unique=False)
     Path = db.Column(db.String(50), nullable=False, unique=False)
 
-    Accessories = db.relationship('Accessorie',backref='image')
+    Accessories = db.relationship('Accessorie', backref='image')
 
     def __repr__(self):
         return '%r' % (self.Name)
@@ -69,7 +70,13 @@ class Image(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('room1.html')
+    today = datetime.today()
+
+    d1 = today.strftime("%H:%M% %a.% %d% %b.")
+    print("d1 =", d1)
+
+    return render_template('room1.html',d1=d1)
+
 
 @app.route('/addAccessories')
 def addAccessories():
