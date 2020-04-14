@@ -72,10 +72,10 @@ class Image(db.Model):
 def index():
     today = datetime.today()
 
-    d1 = today.strftime("%H:%M% %a.% %d% %b.")
+    d1 = today.strftime("%H:%M %a. %d %b.")
     print("d1 =", d1)
 
-    return render_template('room1.html',d1=d1)
+    return render_template('room1.html', d1=d1)
 
 
 @app.route('/addAccessories')
