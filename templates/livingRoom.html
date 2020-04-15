@@ -5,8 +5,11 @@
     <meta charset="utf-8">
     <title>LivingRoom HomeKit Hub</title>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
-        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -15,12 +18,42 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
     <link rel="stylesheet" href="../static/css/livingRoom.css">
+    <link rel="stylesheet" href="../static/css/swipe.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+
+    <!-- <script type="text/javascript" src="../static/js/room1.js"></script> -->
+    <!-- <script type="text/javascript" src="../static/js/swipe.js"></script> -->
 
 </head>
 
 <body>
+
     <div class="container-fluid">
+
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide" data-hash="1">Slide 1</div>
+                <div class="swiper-slide" data-hash="2">Slide 2</div>
+                <div class="swiper-slide" data-hash="3">Slide 3</div>
+                ...
+            </div>
+            <!-- If we need pagination -->
+            <!-- <div class="swiper-pagination"></div> -->
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
 
         <h1 class="display-4 text-white font-weight-bold">Salon</h1>
 
@@ -41,6 +74,7 @@
             </div>
             <!-- Center Pannel -->
             <div class="col-sm-10 col-md-10">
+
                 <!-- <p class="text-center">Second Col</p> -->
                 <button type="button" class="btn">
                     <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
@@ -82,6 +116,47 @@
         </div>
 
     </div>
+
+
+
+    <script src="https://unpkg.com/swiper/js/swiper.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+    <script type="text/javascript" src="../static/js/swipe.js"></script>
+
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+
+            hashNavigation: {
+                replaceState: true,
+                watchState: true,
+            },
+
+            // history: {
+            //     replaceState: true,
+            //     key: 'room',
+            // },
+        })
+    </script>
 
 </body>
 
