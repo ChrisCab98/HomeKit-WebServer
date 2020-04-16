@@ -79,7 +79,7 @@ def index():
 
 @app.route('/room/1')
 def room1():
-    return render_template('addAccessories.html')
+    return render_template('swiper.html')
 
 @app.route('/room/2')
 def room2():
