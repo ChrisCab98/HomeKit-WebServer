@@ -47,7 +47,6 @@
         .swiper-container {
             width: 100%;
             height: 100%;
-
         }
 
         .chris {
@@ -55,10 +54,12 @@
         }
 
         .salon {
-            background: linear-gradient(to right, #2ca53d, #99b555);
+            /* background: linear-gradient(to right, #2ca53d, #99b555); */
+            background-image: linear-gradient(180deg, #2ca53d, #99b555)
         }
 
         .swiper-slide {
+            /* margin-left: 1rem; */
             height: 100%;
             /* text-align: center; */
             /* font-size: 18px; */
@@ -93,67 +94,71 @@
             <!-- Slides -->
             <div class="swiper-slide salon">
 
-                <h1 class="display-4 text-white font-weight-bold">Salon</h1>
+                <div class="container-fluid">
 
-                <h4 class="text-white"><strong>Accessories</strong></h4>
+                    <h1 class="display-4 text-white font-weight-bold">Salon</h1>
 
-                <div class="row">
-                    <!-- Left Pannel -->
-                    <div class="col-sm-1 col-md-1 my-auto">
-                        <!-- <p class="text-center">First Col</p> -->
+                    <h4 class="text-white"><strong>Accessories</strong></h4>
 
-                        <div class="text-center my-auto">
-                            <a href="/">
-                                <img src="../static/png/left-arrow.png" style="width: 4rem; height: 4rem;"
-                                    class="rounded mx-auto" alt="...">
-                            </a>
+                    <div class="row">
+                        <!-- Left Pannel -->
+                        <div class="col-sm-1 col-md-1 my-auto">
+                            <!-- <p class="text-center">First Col</p> -->
+
+                            <div class="text-center my-auto">
+                                <a href="/">
+                                    <img src="../static/png/left-arrow.png" style="width: 4rem; height: 4rem;"
+                                        class="rounded mx-auto" alt="...">
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- Center Pannel -->
+                        <div class="col-sm-10 col-md-10">
+
+                            <!-- <p class="text-center">Second Col</p> -->
+                            <button type="button" class="btn">
+                                <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
+                                    <div class="card-body">
+                                        <img width="64" height="64" src="../static/png/lampLivingRoom.png" class="mr-3"
+                                            alt="...">
+                                        <h5 class="card-title"> <br> Colonne</h5>
+                                        <!-- <p class="card-text">Off</p> -->
+                                        <h6 class="card-subtitle mb-2 text-muted"><strong> <br> Off</strong></h6>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="btn">
+                                <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
+                                    <div class="card-body">
+                                        <img width="64" height="64" src="../static/png/light.png" class="mr-3"
+                                            alt="...">
+                                        <h5 class="card-title"> <br> Arbre</h5>
+                                        <!-- <p class="card-text">Off</p> -->
+                                        <h6 class="card-subtitle mb-2 text-muted"><strong> <br> On</strong></h6>
+                                    </div>
+                                </div>
+                            </button>
+
                         </div>
 
-                    </div>
-                    <!-- Center Pannel -->
-                    <div class="col-sm-10 col-md-10">
+                        <!-- Right Pannel -->
+                        <div class="col-sm-1 col-md-1 my-auto">
+                            <!-- <p class="text-center">Third Col</p> -->
 
-                        <!-- <p class="text-center">Second Col</p> -->
-                        <button type="button" class="btn">
-                            <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
-                                <div class="card-body">
-                                    <img width="64" height="64" src="../static/png/lampLivingRoom.png" class="mr-3"
-                                        alt="...">
-                                    <h5 class="card-title"> <br> Colonne</h5>
-                                    <!-- <p class="card-text">Off</p> -->
-                                    <h6 class="card-subtitle mb-2 text-muted"><strong> <br> Off</strong></h6>
-                                </div>
+                            <div class="text-center">
+                                <a href="/">
+                                    <img src="../static/png/right-arrow.png" style="width: 4rem; height: 4rem;"
+                                        class="rounded mx-auto" alt="...">
+                                </a>
                             </div>
-                        </button>
 
-                        <button type="button" class="btn">
-                            <div class="card bg-light text-left" style="width: 12rem; height: 12rem;">
-                                <div class="card-body">
-                                    <img width="64" height="64" src="../static/png/light.png" class="mr-3" alt="...">
-                                    <h5 class="card-title"> <br> Arbre</h5>
-                                    <!-- <p class="card-text">Off</p> -->
-                                    <h6 class="card-subtitle mb-2 text-muted"><strong> <br> On</strong></h6>
-                                </div>
-                            </div>
-                        </button>
-
-                    </div>
-
-                    <!-- Right Pannel -->
-                    <div class="col-sm-1 col-md-1 my-auto">
-                        <!-- <p class="text-center">Third Col</p> -->
-
-                        <div class="text-center">
-                            <a href="/">
-                                <img src="../static/png/right-arrow.png" style="width: 4rem; height: 4rem;"
-                                    class="rounded mx-auto" alt="...">
-                            </a>
                         </div>
 
                     </div>
 
                 </div>
-
             </div>
 
             <div class="swiper-slide chris">
@@ -252,6 +257,7 @@
 
             // Optional parameters
             direction: 'horizontal',
+            speed: 500,
         })
     </script>
 
