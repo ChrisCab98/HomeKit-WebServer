@@ -100,6 +100,50 @@ $(document).ready(function () {
         socket.emit('publish', data = data);
     });
 
+
+    // Salon
+
+    $('#treeLED').click(function (event) {
+        var topic = 'cmnd/treeLED/power';
+        var message = '';
+        var qos = 0;
+        var state = $('#treeLEDState').text();
+
+        if (state == 'Allumé') {
+            message = 'off';
+        }
+
+        else {
+            message = 'on';
+        }
+
+        var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
+        socket.emit('publish', data = data);
+    });
+
+    $('#columnLED').click(function (event) {
+        var topic = 'cmnd/columnLED/power';
+        var message = '';
+        var qos = 0;
+        var state = $('#columnLEDState').text();
+
+        if (state == 'Allumé') {
+            message = 'off';
+        }
+
+        else {
+            message = 'on';
+        }
+
+        var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
+        socket.emit('publish', data = data);
+    });
+
+
+
+
+
+
     socket.on('mqtt_message', function (data) {
         console.log(data);
         if (data['topic'] == 'stat/smartSurgeOutlet3/POWER') {
@@ -217,6 +261,68 @@ $(document).ready(function () {
             }
             img.setAttribute("src", imgAttribute);
 
+        }
+
+        // Salon
+
+        if (data['topic'] == 'stat/treeLED/POWER') {
+            var img = document.getElementById("treeLEDImg");
+            var imgAttribute = img.getAttribute("src");
+
+            if (data['payload'] == 'ON') {
+                $('#treeLEDState').text('Allumé');
+                imgAttribute = "../static/png/lamp3Glow.png"
+
+                $('#treeLED').removeClass("accessorie")
+                $('#treeLED').addClass("accessorieActive")
+                $('#treeLEDState').removeClass("accessorieStatusOff")
+                $('#treeLEDState').addClass("accessorieStatusOn")
+                $('#treeLEDName').removeClass("accessorieNameOff")
+                $('#treeLEDName').addClass("accessorieNameOn")
+
+            }
+            else {
+                $('#treeLEDState').text('Éteint');
+                imgAttribute = "../static/png/lamp3Off.png"
+
+                $('#treeLED').removeClass("accessorieActive")
+                $('#treeLED').addClass("accessorie")
+                $('#treeLEDState').removeClass("accessorieStatusOn")
+                $('#treeLEDState').addClass("accessorieStatusOff")
+                $('#treeLEDName').removeClass("accessorieNameOn")
+                $('#treeLEDName').addClass("accessorieNameOff")
+            }
+            img.setAttribute("src", imgAttribute);
+        }
+
+        if (data['topic'] == 'stat/columnLED/POWER') {
+            var img = document.getElementById("columnLEDImg");
+            var imgAttribute = img.getAttribute("src");
+
+            if (data['payload'] == 'ON') {
+                $('#columnLEDState').text('Allumé');
+                imgAttribute = "../static/png/lamp1Glow.png"
+
+                $('#columnLED').removeClass("accessorie")
+                $('#columnLED').addClass("accessorieActive")
+                $('#columnLEDState').removeClass("accessorieStatusOff")
+                $('#columnLEDState').addClass("accessorieStatusOn")
+                $('#columnLEDName').removeClass("accessorieNameOff")
+                $('#columnLEDName').addClass("accessorieNameOn")
+
+            }
+            else {
+                $('#columnLEDState').text('Éteint');
+                imgAttribute = "../static/png/lamp1Off.png"
+
+                $('#columnLED').removeClass("accessorieActive")
+                $('#columnLED').addClass("accessorie")
+                $('#columnLEDState').removeClass("accessorieStatusOn")
+                $('#columnLEDState').addClass("accessorieStatusOff")
+                $('#columnLEDName').removeClass("accessorieNameOn")
+                $('#columnLEDName').addClass("accessorieNameOff")
+            }
+            img.setAttribute("src", imgAttribute);
         }
 
     })
