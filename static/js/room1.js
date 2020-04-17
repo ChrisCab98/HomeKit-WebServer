@@ -3,37 +3,28 @@ $(document).ready(function () {
 
     console.log('Page has been refreshed')
 
-    var topic = 'cmnd/smartSurgeOutlet3/power';
-    var message = '';
-    var qos = 0;
-    var data = '{"topic": "' + topic + '", "message": "' + message + '", "qos": ' + qos + '}';
+    function getStatus() {
 
-    var topic2 = 'cmnd/smartSurgeOutlet4/power';
-    var message2 = '';
-    var qos2 = 0;
-    var data2 = '{"topic": "' + topic2 + '", "message": "' + message2 + '", "qos": ' + qos2 + '}';
+        var topic = [];
+        var data = [];
 
-    var topic3 = 'cmnd/smartSurgeOutlet2/power';
-    var message3 = '';
-    var qos3 = 0;
-    var data3 = '{"topic": "' + topic3 + '", "message": "' + message3 + '", "qos": ' + qos3 + '}';
+        topic.push("cmnd/smartSurgeOutlet1/power");
+        topic.push("cmnd/smartSurgeOutlet2/power");
+        topic.push("cmnd/smartSurgeOutlet3/power");
+        topic.push("cmnd/smartSurgeOutlet4/power");
 
-    var topic4 = 'cmnd/smartSurgeOutlet1/power';
-    var message4 = '';
-    var qos4 = 0;
-    var data4 = '{"topic": "' + topic4 + '", "message": "' + message4 + '", "qos": ' + qos4 + '}';
+        topic.push("cmnd/columnLED/power");
+        topic.push("cmnd/treeLED/power");
 
-    socket.emit('publish', data = data);
-    console.log(data)
+        for (var i = 0; i < topic.length; i++) {
+            data.push('{"topic": "' + topic[i] + '", "message": "' + "" + '", "qos": ' + "0" + '}');
+            console.log(data[i])
+            socket.emit('publish', datas = data[i])
+        }
 
-    socket.emit('publish', data2 = data2);
-    console.log(data2)
+    }
 
-    socket.emit('publish', data3 = data3);
-    console.log(data3)
-
-    socket.emit('publish', data4 = data4);
-    console.log(data4)
+    getStatus()
 
     $(".dropdown-toggle").dropdown();
 

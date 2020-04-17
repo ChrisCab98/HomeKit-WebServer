@@ -137,5 +137,8 @@ mqtt.subscribe(topic='stat/smartSurgeOutlet2/POWER')
 mqtt.subscribe(topic='stat/smartSurgeOutlet3/POWER')
 mqtt.subscribe(topic='stat/smartSurgeOutlet4/POWER')
 
+mqtt.subscribe(topic='stat/columnLED/POWER')
+mqtt.subscribe(topic='stat/treeLED/POWER')
+
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000, use_reloader=True, debug=True)
