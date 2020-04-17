@@ -1,8 +1,23 @@
-// $(document).ready(function () {
-//     //initialize swiper when document ready
-//     var mySwiper = new Swiper('.swiper-container', {
-//         // Optional parameters
-//         direction: 'horizontal',
-//         loop: true
-//     })
-// });
+$(document).ready(function () {
+    var mySwiper = new Swiper('.swiper-container', {
+
+        on: {
+
+            init: function () {
+                console.log("SwiperInit")
+            },
+
+            slidePrevTransitionStart: function () {
+                console.log("PrevSlide")
+            },
+
+            slideNextTransitionEnd: function () {
+                console.log("NextSlide")
+            },
+        },
+
+        // Optional parameters
+        direction: 'horizontal',
+        speed: 500,
+    })
+});

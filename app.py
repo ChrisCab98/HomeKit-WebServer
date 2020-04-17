@@ -83,7 +83,7 @@ def room1():
 
 @app.route('/room/2')
 def room2():
-    return render_template('addAccessories.html')
+    return render_template('main.html')
 
 @app.route('/room/3')
 def room3():
